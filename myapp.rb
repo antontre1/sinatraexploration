@@ -29,6 +29,11 @@ get '/chart' do
     erb :chart
 end
 
+get 'timeline' do
+    @title = "Timeline"
+    erb :timeline
+end
+
 
 get '/foo', :agent => /Songbird\d/ do
     "You're using Songbird version #{params['agent'][0]}"
