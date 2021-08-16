@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/reloader' #pour recharger automatiquement les pages lors du rafraississement sans avoir à relancer le server
+require 'chartkick'
 
 # configure :development do
 #     set :database, 'sqlite3:db/dogs.db'
@@ -21,6 +22,23 @@ get '/' do
     @users = User.all
     erb :index
 end
+
+get '/chart' do
+    @title = "Deployments per day"
+    @data = {'2015-07-20 00:00:00 UTC' => 2, '2015-07-21 00:00:00 UTC' => 4, '2015-07-22 00:00:00 UTC' => 1, '2015-07-23 00:00:00 UTC' => 7}
+    erb :chart
+end
+
+get '/timeline' do
+    @title = "Timeline"
+    @matimeline = [
+        ["Pauline", "2021-08-04", "2021-08-15"],
+        ["Antonin", "2021-08-04", "2021-08-29"],
+        ["Emilie", "2021-08-01", "2021-08-21"]
+      ]
+    erb :timeline
+end
+
 
 get '/foo', :agent => /Songbird\d/ do
     "You're using Songbird version #{params['agent'][0]}"
