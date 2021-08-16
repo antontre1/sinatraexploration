@@ -13,4 +13,5 @@ gem "sqlite3"
 gem 'pry'
 gem 'irb'
 gem 'thin'
+gem 'chartkick'
 #gem 'rack-flash3'
